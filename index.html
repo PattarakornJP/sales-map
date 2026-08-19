@@ -719,19 +719,35 @@ button:hover{color:var(--ink)}
 .seg{display:inline-flex;border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .seg button{border:none;border-radius:0;background:transparent}
 .seg button.on{background:var(--accent);color:#fff;font-weight:600}
-#map{height:540px;border-radius:12px;border:1px solid var(--border);z-index:1}
+#map{height:600px;border-radius:14px;border:1px solid var(--border);z-index:1;background:var(--page)}
+.leaflet-container{font:inherit;background:var(--page)}
+.leaflet-control-zoom a{background:var(--surface);color:var(--ink2);border:none;
+  border-bottom:1px solid var(--grid);width:30px;height:30px;line-height:30px;font-size:16px}
+.leaflet-control-zoom a:hover{background:var(--chip);color:var(--ink)}
+.leaflet-control-zoom{border:1px solid var(--border);border-radius:9px;overflow:hidden;box-shadow:none}
+.leaflet-control-attribution{background:rgba(252,252,251,.75);color:#898781;font-size:10px;padding:1px 6px}
+:root[data-theme="dark"] .leaflet-control-attribution{background:rgba(26,26,25,.75)}
+.leaflet-control-attribution a{color:#898781}
+.leaflet-popup-content-wrapper{background:var(--surface);color:var(--ink);border-radius:12px;
+  box-shadow:0 8px 26px rgba(0,0,0,.16)}
+.leaflet-popup-tip{background:var(--surface)}
+.zlab{background:none;border:none;box-shadow:none;color:var(--ink2);font-size:11.5px;font-weight:600;
+  text-shadow:0 1px 3px var(--surface),0 0 6px var(--surface);white-space:nowrap;padding:0;margin:0}
+.zlab::before{display:none}
 .maprow{display:grid;grid-template-columns:1fr 310px;gap:16px}
-.zlist{max-height:540px;overflow:auto;border:1px solid var(--border);border-radius:12px}
-.zrow{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 13px;border-bottom:1px solid var(--grid);font-size:13.5px;cursor:pointer}
-.zrow:last-child{border-bottom:none}
+.zlist{max-height:600px;overflow:auto;padding-right:2px}
+.zrow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:9px 11px;
+  border-radius:9px;font-size:13.5px;cursor:pointer}
+.zrow+.zrow{border-top:1px solid var(--grid)}
 .zrow:hover,.zrow.on{background:var(--chip)}
-.zrow b{font-weight:600}
-.zrow small{display:block;color:var(--muted);font-size:11.5px}
-.zrow .n{font-variant-numeric:tabular-nums;font-weight:650}
+.zrow b{font-weight:500}
+.zrow .n{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink2)}
+.zbar{height:3px;border-radius:99px;background:var(--grid);margin-top:5px;overflow:hidden;display:flex}
+.zbar i{display:block;height:100%}
 .leaflet-popup-content{margin:12px 14px;font:inherit;font-size:13px;max-height:250px;overflow:auto}
-.pp{display:flex;gap:7px;padding:4px 0;border-top:1px solid #e1e0d9}
+.pp{display:flex;gap:7px;padding:5px 0;border-top:1px solid var(--grid)}
 .pp i{width:9px;height:9px;border-radius:99px;flex:none;margin-top:5px}
-.pp a{color:#2a78d6}
+.pp a{color:var(--accent);font-size:12px}
 .bar-chart{display:flex;flex-direction:column;gap:10px}
 .brow{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}
 .bname{text-align:right;font-size:12.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -762,8 +778,8 @@ td a{color:var(--accent);white-space:nowrap}
 .none::before{content:"— "}
 mark{background:rgba(250,178,25,.35);color:inherit;border-radius:2px}
 .empty{padding:26px;text-align:center;color:var(--muted)}
-.note{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--warn);
-  border-radius:10px;padding:12px 15px;font-size:13px;color:var(--ink2);margin-top:14px}
+.note{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.6}
+.note b{color:var(--ink2);font-weight:600}
 .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:24px}
 @media(max-width:860px){ .maprow{grid-template-columns:1fr} #map{height:420px} .zlist{max-height:300px} }
 @media(max-width:620px){
@@ -801,7 +817,7 @@ mark{background:rgba(250,178,25,.35);color:inherit;border-radius:2px}
       <div id="map"></div>
       <div class="zlist" id="zlist"></div>
     </div>
-    <div class="note">ตำแหน่งบนแผนที่คำนวณจาก <b>พื้นที่/โซน</b> ที่กรอกไว้ ยังไม่ใช่พิกัดจริงของแต่ละโรงแรม — จุดในโหมด "รายลูกค้า" จะกระจายรอบใจกลางโซนเพื่อให้คลิกดูทีละรายได้ ถ้าเติมคอลัมน์ Latitude/Longitude มา หมุดจะตรงตำแหน่งจริงทันที</div>
+    <p class="note" id="mapNote"></p>
   </section>
 
   <div class="card">
@@ -856,6 +872,9 @@ function hl(t,q){ t=String(t??''); if(!q) return esc(t);
 
 const ROWS = D.ROWS.map((r,i) => ({...r, id:i}));
 const zoned = ROWS.filter(r => r.z && D.ZC[r.z]);
+const SOUTH = L.latLngBounds([5.4, 96.9], [12.0, 102.4]);   /* ภาคใต้เท่านั้น */
+const inSouth = z => { const c = D.ZC[z]; return c && SOUTH.contains(L.latLng(c[0], c[1])); };
+const outsideCount = zoned.filter(r => !inSouth(r.z)).length;
 let mode = 'zone', fSale = '', fType = '';
 
 /* theme */
@@ -866,7 +885,7 @@ tb.textContent = curDark() ? 'โหมดสว่าง' : 'โหมดมื
 tb.addEventListener('click', () => {
   document.documentElement.setAttribute('data-theme', curDark() ? 'light':'dark');
   tb.textContent = curDark() ? 'โหมดสว่าง' : 'โหมดมืด';
-  drawMap(); drawZoneChart();
+  setTiles(); drawMap(); drawZoneChart();
 });
 
 /* KPI */
@@ -875,7 +894,7 @@ const pct = Math.round(zoned.length / ROWS.length * 100);
 $('#kpis').innerHTML = [
   ['ลูกค้าทั้งหมด', nf(ROWS.length), 'จากไฟล์เซลล์', ''],
   ['ระบุพื้นที่แล้ว', nf(zoned.length), pct + '% ของทั้งหมด', 'meter:' + pct],
-  ['พื้นที่ที่พบ', nf(new Set(zoned.map(r=>r.z)).size) + ' โซน', 'อันดามัน + อ่าวไทย', ''],
+  ['พื้นที่ที่พบ', nf(new Set(zoned.filter(r=>inSouth(r.z)).map(r=>r.z)).size) + ' โซน', 'ทั่วภาคใต้', ''],
   ['ลูกค้าโรงแรม', nf(hotels), 'จาก ' + nf(ROWS.filter(r=>r.typ).length) + ' รายที่ระบุประเภท', ''],
   ['ยังไม่ระบุพื้นที่', nf(ROWS.length - zoned.length), 'กรอกเพิ่มได้', 'flag']
 ].map(([l,v,s,c]) => {
@@ -893,12 +912,26 @@ const types = [...new Set(ROWS.map(r=>r.typ).filter(Boolean))];
 $('#fType').innerHTML = '<option value="">ทุกประเภท</option>' + types.map(t=>'<option>'+esc(t)+'</option>').join('');
 
 /* map */
-const map = L.map('map', {scrollWheelZoom:false}).setView([8.3, 98.8], 8);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18, attribution:'&copy; OpenStreetMap'}).addTo(map);
+const map = L.map('map', {scrollWheelZoom:false, zoomControl:true, minZoom:6,
+  maxBounds: SOUTH, maxBoundsViscosity: 0.9, attributionControl:true}).setView([8.6, 99.2], 7);
+const TILE = {
+  light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+  dark:  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+};
+let tiles = null;
+function setTiles(){
+  if (tiles) map.removeLayer(tiles);
+  tiles = L.tileLayer(TILE[curDark() ? 'dark' : 'light'], {
+    maxZoom: 19, subdomains: 'abcd',
+    attribution: '&copy; OpenStreetMap &copy; CARTO'
+  }).addTo(map);
+  tiles.setZIndex(0);
+}
 let layer = L.layerGroup().addTo(map), fitted = false;
+let zoomTimer;
 
 function shown(){
-  return zoned.filter(r => (!fSale || r.nick === fSale) && (!fType || r.typ === fType));
+  return zoned.filter(r => inSouth(r.z) && (!fSale || r.nick === fSale) && (!fType || r.typ === fType));
 }
 function groupZones(list){
   const m = {}; list.forEach(r => (m[r.z] = m[r.z] || []).push(r));
@@ -910,47 +943,68 @@ function spread(i, n){
   const ang = (idx/per) * 2*Math.PI + ring*0.7, rad = 0.006 + ring*0.006;
   return [rad*Math.cos(ang), rad*Math.sin(ang)*1.4];
 }
+function cssv(v){ return getComputedStyle(document.body).getPropertyValue(v).trim(); }
+function popupZone(z, arr){
+  const cnt = D.SALES.map(sn => ({sn, v: arr.filter(r=>r.nick===sn).length})).filter(o=>o.v>0);
+  return '<div style="font-size:14px;font-weight:600;margin-bottom:2px">'+esc(z)+'</div>'+
+    '<div style="color:var(--muted);font-size:11.5px;margin-bottom:8px">'+nf(arr.length)+' ราย · '+
+    cnt.map(o=>esc(o.sn)+' '+o.v).join(' · ')+'</div>' +
+    arr.slice(0,15).map(custHTML).join('') +
+    (arr.length>15 ? '<div class="pp" style="color:var(--muted)">…และอีก '+(arr.length-15)+' ราย</div>' : '');
+}
 function custHTML(r){
   return '<div class="pp"><i style="background:'+craw(r.nick)+'"></i><span><b>'+esc(r.hotel || r.c)+'</b>'+
-    (r.hotel ? '<br><span style="color:#898781;font-size:11.5px">'+esc(r.c)+'</span>' : '') +
-    '<br><span style="color:#898781;font-size:11.5px">'+esc(r.nick)+(r.typ?' · '+esc(r.typ):'')+'</span>'+
+    (r.hotel ? '<br><span style="color:var(--muted);font-size:11.5px">'+esc(r.c)+'</span>' : '') +
+    '<br><span style="color:var(--muted);font-size:11.5px">'+esc(r.nick)+(r.typ?' · '+esc(r.typ):'')+'</span>'+
     (r.url ? '<br><a href="'+esc(r.url)+'" target="_blank" rel="noopener">เปิด Google Maps ↗</a>' : '')+'</span></div>';
 }
 function drawMap(){
   layer.clearLayers();
   const list = shown(), groups = groupZones(list), bounds = [];
+  const total = list.length;
   if (mode === 'zone'){
-    const max = Math.max(1, ...groups.map(g=>g[1].length));
-    groups.forEach(([z,arr]) => {
+    const max = Math.max(1, ...groups.map(g => g[1].length));
+    groups.forEach(([z, arr], gi) => {
       const [lat,lng] = D.ZC[z];
       const top = Object.entries(arr.reduce((a,p)=>(a[p.nick]=(a[p.nick]||0)+1,a),{})).sort((a,b)=>b[1]-a[1])[0][0];
       const col = craw(fSale || top);
-      const m = L.circleMarker([lat,lng], {radius: 9 + 24*Math.sqrt(arr.length/max), color:col, weight:2,
-        fillColor:col, fillOpacity:.4});
-      m.bindPopup('<b>'+esc(z)+'</b> — '+nf(arr.length)+' ราย' + arr.slice(0,20).map(custHTML).join('') +
-        (arr.length>20 ? '<div class="pp" style="color:#898781">…และอีก '+(arr.length-20)+' ราย</div>' : ''), {maxWidth:320});
-      m.bindTooltip(z+' — '+arr.length+' ราย', {direction:'top'});
+      const r = 8 + 22 * Math.sqrt(arr.length / max);
+      const m = L.circleMarker([lat,lng], {radius:r, color:cssv('--surface'), weight:2,
+        fillColor:col, fillOpacity:.72, className:'zdot'});
+      m.bindPopup(popupZone(z, arr), {maxWidth:320, closeButton:false});
+      m.bindTooltip(z + ' · ' + arr.length + ' ราย', {direction:'top', offset:[0,-r]});
       m.addTo(layer); bounds.push([lat,lng]);
+      if (map.getZoom() >= 9 && gi < 10){          /* ป้ายชื่อโผล่เมื่อซูมเข้า */
+        L.marker([lat,lng], {interactive:false, icon: L.divIcon({className:'zlab',
+          html: esc(z), iconSize:[0,0], iconAnchor:[-(r+5), 6]})}).addTo(layer);
+      }
     });
   } else {
     groups.forEach(([z,arr]) => {
       const [lat,lng] = D.ZC[z];
-      arr.forEach((r,i) => {
+      arr.forEach((rr,i) => {
         const [dy,dx] = spread(i, arr.length);
-        const p = [lat+dy, lng+dx], col = craw(r.nick);
-        const m = L.circleMarker(p, {radius:7, color:'#ffffff', weight:2, fillColor:col, fillOpacity:.95});
-        m.bindPopup('<div style="color:#898781;font-size:11.5px">'+esc(z)+'</div>'+custHTML(r), {maxWidth:300});
-        m.bindTooltip(r.hotel || r.c, {direction:'top'});
+        const p = [lat+dy, lng+dx];
+        const m = L.circleMarker(p, {radius:6, color:cssv('--surface'), weight:2,
+          fillColor:craw(rr.nick), fillOpacity:1});
+        m.bindPopup('<div style="color:var(--muted);font-size:11.5px;margin-bottom:2px">'+esc(z)+'</div>'+custHTML(rr),
+          {maxWidth:300, closeButton:false});
+        m.bindTooltip(rr.hotel || rr.c, {direction:'top', offset:[0,-6]});
         m.addTo(layer); bounds.push(p);
       });
     });
   }
-  if (bounds.length && !fitted){ map.fitBounds(bounds, {padding:[45,45], maxZoom:10}); fitted = true; }
+  if (bounds.length && !fitted){ map.fitBounds(bounds, {padding:[50,50], maxZoom:9.5}); fitted = true; }
+  const max2 = Math.max(1, ...groups.map(g=>g[1].length));
   $('#zlist').innerHTML = groups.map(([z,arr]) => {
-    const cnt = Object.entries(arr.reduce((a,p)=>(a[p.nick]=(a[p.nick]||0)+1,a),{})).sort((a,b)=>b[1]-a[1]);
-    return '<div class="zrow" data-z="'+esc(z)+'"><div><b>'+esc(z)+'</b><small>'+
-      cnt.map(([k,v])=>esc(k)+' '+v).join(' · ')+'</small></div><div class="n">'+nf(arr.length)+'</div></div>';
+    const cnt = D.SALES.map(sn => ({sn, v: arr.filter(r=>r.nick===sn).length})).filter(o=>o.v>0);
+    return '<div class="zrow" data-z="'+esc(z)+'"><div style="min-width:0"><b>'+esc(z)+'</b>'+
+      '<div class="zbar" style="width:'+(arr.length/max2*100)+'%">'+
+      cnt.map(o=>'<i style="width:'+(o.v/arr.length*100)+'%;background:'+cvar(o.sn)+'"></i>').join('')+
+      '</div></div><div class="n">'+nf(arr.length)+'</div></div>';
   }).join('') || '<div class="empty">ไม่มีข้อมูลในตัวกรองนี้</div>';
+  $('#mapDesc').textContent = 'แสดง ' + nf(total) + ' ราย ใน ' + nf(groups.length) +
+    ' พื้นที่ทั่วภาคใต้ · คลิกวงกลมหรือชื่อพื้นที่เพื่อดูรายละเอียด';
 }
 function drawZoneChart(){
   const groups = groupZones(shown());
@@ -975,6 +1029,7 @@ document.addEventListener('click', e => {
   if (zr){ const z = zr.dataset.z; map.setView(D.ZC[z], 12, {animate:true}); }
 });
 $('#fType').addEventListener('change', () => { fType = $('#fType').value; drawMap(); drawZoneChart(); });
+map.on('zoomend', () => { clearTimeout(zoomTimer); zoomTimer = setTimeout(() => { if (mode==='zone') drawMap(); }, 120); });
 
 /* table */
 const zoneOpts = [...new Set(ROWS.map(r=>r.z).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'th'));
@@ -1008,7 +1063,9 @@ function renderTable(){
   $(s).addEventListener('input', renderTable); $(s).addEventListener('change', renderTable);
 });
 
-drawMap(); drawZoneChart(); renderTable();
+$('#mapNote').innerHTML = 'ตำแหน่งคำนวณจาก <b>พื้นที่/โซน</b> ที่กรอกไว้ ยังไม่ใช่พิกัดจริงของแต่ละโรงแรม — โหมด "รายลูกค้า" จะกระจายจุดรอบใจกลางโซนเพื่อให้คลิกดูทีละรายได้ · เติมคอลัมน์ Latitude/Longitude มาเมื่อไหร่ หมุดจะตรงตำแหน่งจริงทันที' +
+  (outsideCount ? ' · แผนที่แสดงเฉพาะภาคใต้ จึงไม่รวม <b>' + outsideCount + ' ราย</b> ที่อยู่นอกภาคใต้ (ดูได้ในตารางด้านล่าง)' : '');
+setTiles(); drawMap(); drawZoneChart(); renderTable();
 </script>
 </body>
 </html>
