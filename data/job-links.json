@@ -1,0 +1,811 @@
+{
+  "source": "sales-map customers + pe-jobs data/locations.json",
+  "links": [
+    {
+      "table": "project",
+      "so": "SO2601-001",
+      "zone": "เกาะลันตา",
+      "hotel": "Avani Koh Lanta",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2601-086",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "โรงเรียนนานาชาติบริติช",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2601-119",
+      "zone": "กมลา",
+      "hotel": "Paresa",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-014",
+      "zone": "เกาะสิเหร่",
+      "hotel": "Westin Siray",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-021",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-022",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-023",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-035",
+      "zone": "ป่าตอง",
+      "hotel": "Amatara Wellness",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-042",
+      "zone": "ป่าตอง",
+      "hotel": "Hemingway Silk",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-089",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Banyan Tree",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-090",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Banyan Tree",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-112",
+      "zone": "เกาะสมุย",
+      "hotel": "Melia Samui",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2603-094",
+      "zone": "กะตะ-กะรน",
+      "hotel": "The Shore at Katathani Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2604-017",
+      "zone": "ไม้ขาว-ในยาง",
+      "hotel": "Anantara Mai Khao Phuket Villas (APKV)",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2604-025",
+      "zone": "กมลา",
+      "hotel": "Paresa",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2605-062",
+      "zone": "กะตะ-กะรน",
+      "hotel": "BaumanCasa Beach Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2605-104",
+      "zone": "อ่าวนาง",
+      "hotel": "Aonang Buri",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2605-103",
+      "zone": "อ่าวนาง",
+      "hotel": "Bluesotel",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-004",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Anantara Layan",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-016",
+      "zone": "กะตะ-กะรน",
+      "hotel": "The Shore at Katathani Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-019",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-020",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "Grand Mercure Khao Lak Bangsak",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-057",
+      "zone": "ป่าตอง",
+      "hotel": "The Lunar Patong",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-061",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "Grand Mercure Khao Lak Bangsak",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-075",
+      "zone": "กะตะ-กะรน",
+      "hotel": "Phuket Island View",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-083",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Banyan Tree",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-091",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Thaiga Sauna",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-104",
+      "zone": "กะตะ-กะรน",
+      "hotel": "BaumanCasa Beach Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2607-010",
+      "zone": "กะตะ-กะรน",
+      "hotel": "BaumanCasa Beach Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2607-028",
+      "zone": "กมลา",
+      "hotel": "Paresa",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2607-039",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Banyan Tree",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2607-053",
+      "zone": "ถลาง",
+      "hotel": "The Residence Prime",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2607-061",
+      "zone": "อ่าวนาง",
+      "hotel": "Pakasai",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2607-062",
+      "zone": "อ่าวนาง",
+      "hotel": "Pakasai",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2607-102",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "how": "exact",
+      "hotelIncludes": "layan green park"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-016",
+      "zone": "กะตะ-กะรน",
+      "hotel": "Centara Karon",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-028",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Banyan Tree",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-059",
+      "zone": "กระบี่",
+      "hotel": "ภูเล เบย์ อะ ริทซ์-คาร์ลตัน รีเซิร์ฟ",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-084",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "how": "exact",
+      "hotelIncludes": "layan green park"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-085",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "how": "exact",
+      "hotelIncludes": "layan green park"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-087",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Banyan Tree",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-106",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Banyan Tree",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-104",
+      "zone": "กะตะ-กะรน",
+      "hotel": "The Shore at Katathani Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-117",
+      "zone": "เกาะสมุย",
+      "hotel": "Hyatt Regency Samui",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-118",
+      "zone": "เกาะสมุย",
+      "hotel": "Hyatt Regency Samui",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-123",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "โรงเรียนนานาชาติบริติช",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-153",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Staybridge Suite Bangtao",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-001",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Staybridge Suite Bangtao",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-005",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-006",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-095",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Thaiga Sauna",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-117",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "OUTRIGGER Khao Lak Beach Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-118",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "OUTRIGGER Khao Lak Beach Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-121",
+      "zone": "เขาขาด-พันวา",
+      "hotel": "Tiva Centara",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-122",
+      "zone": "เขาขาด-พันวา",
+      "hotel": "Tiva Centara",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-123",
+      "zone": "เขาขาด-พันวา",
+      "hotel": "Tiva Centara",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-124",
+      "zone": "เขาขาด-พันวา",
+      "hotel": "Tiva Centara",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-004",
+      "zone": "กะตะ-กะรน",
+      "hotel": "Sugar Marina Hotel",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-044",
+      "zone": "ป่าตอง",
+      "hotel": "The Nature Patong",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-045",
+      "zone": "ป่าตอง",
+      "hotel": "The Nature Patong",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-073",
+      "zone": "เกาะลันตา",
+      "hotel": "Avani Koh Lanta",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "OE2503-137",
+      "zone": "กะตะ-กะรน",
+      "hotel": "The Shore at Katathani Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2507-006",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "how": "exact",
+      "hotelIncludes": "layan green park"
+    },
+    {
+      "table": "project",
+      "so": "SO2507-007",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "how": "exact",
+      "hotelIncludes": "layan green park"
+    },
+    {
+      "table": "project",
+      "so": "SO2507-108",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "Khao Lak Paradise",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2508-046",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "how": "exact",
+      "hotelIncludes": "layan green park"
+    },
+    {
+      "table": "project",
+      "so": "SO2510-006",
+      "zone": "กมลา",
+      "hotel": "Hyatt Regency Phuket Resort",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-005",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-006",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-007",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-008",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-009",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-010",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-011",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-012",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-013",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Kleage Wellness Retreat",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-168",
+      "zone": "ป่าตอง",
+      "hotel": "The Nature Patong",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-169",
+      "zone": "ป่าตอง",
+      "hotel": "The Nature Patong",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2512-107",
+      "zone": "ป่าตอง",
+      "hotel": "The Kee Resort & Spa Patong",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2512-111",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "how": "exact",
+      "hotelIncludes": "angsana laguna phuket"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-094",
+      "zone": "กมลา",
+      "hotel": "Paresa",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "SO2606-106",
+      "zone": "เกาะสมุย",
+      "hotel": "Centara Grand Beach Resort",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2608-007",
+      "zone": "ป่าตอง",
+      "hotel": "The Kee Resort & Spa Patong",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2608-014",
+      "zone": "ป่าตอง",
+      "hotel": "The Lunar Patong",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2608-031",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2609-003",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2609-004",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "SO2609-041",
+      "zone": "ป่าตอง",
+      "hotel": "The Kee Resort & Spa Patong",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "PSE - PHK6904-002",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "PSE - PHK6908-006",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "PSE - PHK6908-007",
+      "zone": "ไม้ขาว-ในยาง",
+      "hotel": "Anantara Mai Khao Phuket Villas (APKV)",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "PSE - PHK6908-009",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "how": "exact",
+      "hotelIncludes": "angsana laguna phuket"
+    },
+    {
+      "table": "service",
+      "so": "OE2211-083",
+      "zone": "กมลา",
+      "hotel": "Andara",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "PSE - PHK6909-007",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Arinara Beach Resort",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2510-095",
+      "zone": "อ่าวนาง",
+      "hotel": "Red Ginger",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2603-088 rev.1",
+      "zone": "ไม้ขาว-ในยาง",
+      "hotel": "Anantara Mai Khao Phuket Villas (APKV)",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "SO2607-028",
+      "zone": "กมลา",
+      "hotel": "Paresa",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2609-132",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "ALEENTA RESORT PHANG-NGA",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2610-012",
+      "zone": "กะตะ-กะรน",
+      "hotel": "The Shore at Katathani Resort",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "SO2610-011",
+      "zone": "เกาะสมุย",
+      "hotel": "Holiday Inn Samui Bophut",
+      "how": "fuzzy"
+    },
+    {
+      "table": "service",
+      "so": "OE2311-093",
+      "zone": "ป่าตอง",
+      "hotel": "Ocean & Ole",
+      "how": "fuzzy"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-090",
+      "zone": "กมลา",
+      "hotel": "Kram Anda",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-038",
+      "zone": "กมลา",
+      "hotel": "Kram Anda",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-111",
+      "zone": "ไม้ขาว-ในยาง",
+      "hotel": "Anantara Vacation Club Maikhao",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-150",
+      "zone": "เมืองภูเก็ต",
+      "hotel": "อัลฟ่า เฮลธ์ คลับ",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-007",
+      "zone": "กระบี่",
+      "hotel": "ภูเล เบย์ อะ ริทซ์-คาร์ลตัน รีเซิร์ฟ",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-130",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Royal Phuket Marina",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-131",
+      "zone": "เกาะแก้ว-อ่าวปอ",
+      "hotel": "Royal Phuket Marina",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-026",
+      "zone": "หาดลายัน",
+      "hotel": "Anantara Layan",
+      "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-081",
+      "zone": "กะตะ-กะรน",
+      "companyIncludes": "kata thani",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "PSE - PHK6908-003",
+      "zone": "ป่าตอง",
+      "hotelIncludes": "the kee resort",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "SO2609-125",
+      "zone": "กะตะ-กะรน",
+      "companyIncludes": "kata thani",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "SO2610-052",
+      "zone": "ป่าตอง",
+      "hotelIncludes": "patong beach hotel",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "Presale",
+      "zone": "ในทอน",
+      "hotel": "Trisara",
+      "how": "exact"
+    },
+    {
+      "table": "service",
+      "so": "",
+      "id": 32,
+      "zone": "อ่าวนาง",
+      "hotel": "Krabi Resort",
+      "how": "exact"
+    }
+  ]
+}

@@ -781,6 +781,15 @@ mark{background:rgba(250,178,25,.35);color:inherit;border-radius:2px}
 .empty{padding:26px;text-align:center;color:var(--muted)}
 .note{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.6}
 .note b{color:var(--ink2);font-weight:600}
+.pejobs{margin-top:4px;padding-top:4px;border-top:1px dashed var(--grid)}
+.pejob{font-size:12px;color:var(--ink2);padding:1px 0}
+.pejob b{font-weight:650}
+.noloc{margin-top:16px;padding-top:12px;border-top:1px solid var(--grid)}
+.noloc h3{margin:0 0 4px;font-size:15.5px;font-weight:640}
+.noloc .desc{margin-bottom:10px}
+.noloc-jump{background:var(--surface);color:var(--ink);border:1px solid var(--warn);border-radius:10px;
+  padding:6px 10px;font:inherit;font-size:12.5px;font-weight:650;box-shadow:var(--shadow);cursor:pointer}
+.approx-tag{color:var(--muted);font-size:11.5px}
 .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:24px}
 .nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
 .nav a{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;
@@ -822,6 +831,7 @@ mark{background:rgba(250,178,25,.35);color:inherit;border-radius:2px}
         <button data-mode="zone" class="on" type="button">รวมเป็นพื้นที่</button>
         <button data-mode="point" type="button">รายลูกค้า</button>
       </span>
+      <span class="chip" style="cursor:default"><i style="background:#fab219"></i>งาน PE</span>
       <span class="lbl" style="margin-left:6px">เซลล์:</span>
       <span class="chip on" data-sale="">ทุกคน</span><span id="saleChips"></span>
       <select id="fType" style="width:auto;min-width:150px"></select>
@@ -831,6 +841,16 @@ mark{background:rgba(250,178,25,.35);color:inherit;border-radius:2px}
       <div class="zlist" id="zlist"></div>
     </div>
     <p class="note" id="mapNote"></p>
+    <div class="noloc" id="nolocCard" hidden>
+      <h3>ยังไม่มีตำแหน่ง <span id="nolocCount"></span></h3>
+      <p class="desc" id="nolocDesc">งานจาก PE Jobs ที่ยังหาที่ตั้งไม่ได้ จึงไม่ปักหมุด</p>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>เลข SO</th><th>บริษัท</th><th>โครงการ</th><th>สถานะ</th></tr></thead>
+          <tbody id="nolocBody"></tbody>
+        </table>
+      </div>
+    </div>
   </section>
 
   <div class="card">
@@ -966,16 +986,37 @@ function spread(i, n){
 function cssv(v){ return getComputedStyle(document.body).getPropertyValue(v).trim(); }
 function popupZone(z, arr){
   const cnt = D.SALES.map(sn => ({sn, v: arr.filter(r=>r.nick===sn).length})).filter(o=>o.v>0);
+  peSeen = new Set();
   return '<div style="font-size:14px;font-weight:600;margin-bottom:2px">'+esc(z)+'</div>'+
     '<div style="color:var(--muted);font-size:11.5px;margin-bottom:8px">'+nf(arr.length)+' ราย · '+
     cnt.map(o=>esc(o.sn)+' '+o.v).join(' · ')+'</div>' +
     arr.slice(0,15).map(custHTML).join('') +
     (arr.length>15 ? '<div class="pp" style="color:var(--muted)">…และอีก '+(arr.length-15)+' ราย</div>' : '');
 }
+let peSeen = null;
+function peJobsHtml(r){
+  const jobs = r.peJobs || [];
+  if (!jobs.length) return '';
+  const list = [];
+  jobs.forEach(j => {
+    const k = (j.table||'') + '|' + (j.so||'') + '|' + (j.id||'');
+    if (peSeen){ if (peSeen.has(k)) return; peSeen.add(k); }
+    list.push(j);
+  });
+  if (!list.length) return '';
+  const show = list.slice(0, 4);
+  const dash = list.every(j => j.table === 'service') ? PE_DASH + '#service' : PE_DASH;
+  return '<div class="pejobs">' +
+    show.map(j => '<div class="pejob"><b>' + esc(j.so || 'ไม่มีเลข SO') + '</b> · ' + esc(j.status) +
+      (j.proj ? ' · ' + esc(j.proj) : '') + '</div>').join('') +
+    (list.length > 4 ? '<div class="pejob">…อีก ' + (list.length - 4) + ' งาน</div>' : '') +
+    '<a href="' + dash + '" target="_blank" rel="noopener">เปิด PE Jobs ↗</a></div>';
+}
 function custHTML(r){
   return '<div class="pp"><i style="background:'+craw(r.nick)+'"></i><span><b>'+esc(r.hotel || r.c)+'</b>'+
     (r.hotel ? '<br><span style="color:var(--muted);font-size:11.5px">'+esc(r.c)+'</span>' : '') +
     '<br><span style="color:var(--muted);font-size:11.5px">'+esc(r.nick)+(r.typ?' · '+esc(r.typ):'')+'</span>'+
+    peJobsHtml(r) +
     (r.url ? '<br><a href="'+esc(r.url)+'" target="_blank" rel="noopener">เปิด Google Maps ↗</a>' : '')+'</span></div>';
 }
 function drawMap(){
@@ -1007,6 +1048,7 @@ function drawMap(){
         const p = [lat+dy, lng+dx];
         const m = L.circleMarker(p, {radius:6, color:cssv('--surface'), weight:2,
           fillColor:craw(rr.nick), fillOpacity:1});
+        peSeen = new Set();
         m.bindPopup('<div style="color:var(--muted);font-size:11.5px;margin-bottom:2px">'+esc(z)+'</div>'+custHTML(rr),
           {maxWidth:300, closeButton:false});
         m.bindTooltip(rr.hotel || rr.c, {direction:'top', offset:[0,-6]});
@@ -1014,6 +1056,7 @@ function drawMap(){
       });
     });
   }
+  drawPePins(bounds);
   if (bounds.length && !fitted){ map.fitBounds(bounds, {padding:[50,50], maxZoom:9.5}); fitted = true; }
   const max2 = Math.max(1, ...groups.map(g=>g[1].length));
   $('#zlist').innerHTML = groups.map(([z,arr]) => {
@@ -1023,6 +1066,8 @@ function drawMap(){
       cnt.map(o=>'<i style="width:'+(o.v/arr.length*100)+'%;background:'+cvar(o.sn)+'"></i>').join('')+
       '</div></div><div class="n">'+nf(arr.length)+'</div></div>';
   }).join('') || '<div class="empty">ไม่มีข้อมูลในตัวกรองนี้</div>';
+  const peHtml = peListHtml();
+  if (peHtml) $('#zlist').insertAdjacentHTML('beforeend', peHtml);
   $('#mapDesc').textContent = 'แสดง ' + nf(total) + ' ราย ใน ' + nf(groups.length) +
     ' พื้นที่ทั่วภาคใต้ · คลิกวงกลมหรือชื่อพื้นที่เพื่อดูรายละเอียด';
 }
@@ -1046,6 +1091,10 @@ document.addEventListener('click', e => {
   if (chip){ document.querySelectorAll('.chip[data-sale]').forEach(c=>c.classList.remove('on'));
     chip.classList.add('on'); fSale = chip.dataset.sale; drawMap(); drawZoneChart(); return; }
   const zr = e.target.closest('.zrow');
+  if (zr && zr.dataset.ll){
+    const p = zr.dataset.ll.split(',').map(Number);
+    map.setView(p, 14, {animate:true}); return;
+  }
   if (zr){ const z = zr.dataset.z; map.setView(D.ZC[z], 12, {animate:true}); }
 });
 $('#fType').addEventListener('change', () => { fType = $('#fType').value; drawMap(); drawZoneChart(); });
@@ -1064,14 +1113,16 @@ function renderTable(){
     if (s && r.nick !== s) return false;
     if (f === 'y' && !r.z) return false;
     if (f === 'n' && r.z) return false;
-    if (q && !((r.c+' '+r.hotel+' '+r.z+' '+r.prov+' '+r.typ+' '+r.nick).toLowerCase().includes(q))) return false;
+    const sos = (r.peJobs||[]).map(j => (j.so||'')+' '+(j.proj||'')).join(' ');
+    if (q && !((r.c+' '+r.hotel+' '+r.z+' '+r.prov+' '+r.typ+' '+r.nick+' '+sos).toLowerCase().includes(q))) return false;
     return true;
   });
   out.sort((a,b) => (a.z||'zzz').localeCompare(b.z||'zzz','th') || (a.hotel||a.c).localeCompare(b.hotel||b.c,'th'));
   $('#count').innerHTML = 'แสดง <b>'+nf(out.length)+'</b> รายการ · กรอกพื้นที่แล้ว <b>'+nf(out.filter(r=>r.z).length)+'</b>';
   if (!out.length){ $('#tbody').innerHTML = '<tr><td colspan="6" class="empty">ไม่พบรายการ</td></tr>'; return; }
   $('#tbody').innerHTML = out.slice(0,400).map(r =>
-    '<tr><td class="cust"><b>'+hl(r.hotel || r.c, q)+'</b>'+(r.hotel?'<small>'+hl(r.c,q)+'</small>':'')+'</td>'+
+    '<tr><td class="cust"><b>'+hl(r.hotel || r.c, q)+'</b>'+(r.hotel?'<small>'+hl(r.c,q)+'</small>':'')+
+    ((r.peJobs&&r.peJobs.length)?'<small>PE '+hl(r.peJobs.map(j=>j.so).filter(Boolean).slice(0,3).join(', '), q)+'</small>':'')+'</td>'+
     '<td>'+(r.z ? hl(r.z,q) : '<span class="none">ยังไม่กรอก</span>')+'</td>'+
     '<td>'+(r.prov ? hl(r.prov,q) : '<span class="none"></span>')+'</td>'+
     '<td>'+(r.typ ? hl(r.typ,q) : '<span class="none"></span>')+'</td>'+
@@ -1082,6 +1133,249 @@ function renderTable(){
 ['#q','#fZone','#fSale','#fFill'].forEach(s => {
   $(s).addEventListener('input', renderTable); $(s).addEventListener('change', renderTable);
 });
+
+
+const PE_API = 'https://script.google.com/macros/s/AKfycbyTLuAv5sGDRJINR_nhOGJs5yUAQT3hGKsOaDFbtwazyil6C2BFHb8SkxVFncDO6_Sm/exec';
+const PE_DASH = 'https://pattarakornjp.github.io/pe-jobs/';
+let peLinks = [], pePlaces = [], peSites = [];
+let pePins = [], peMiss = [], pePlaceGroups = [];
+let peLoaded = false, peFrom = '';
+
+function peNorm(s){
+  return String(s || '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9ก-๙]+/g, ' ').replace(/\s+/g, ' ').trim();
+}
+function svcStatus(r){
+  if (Number(r.workDone)) return 'เสร็จแล้ว';
+  if (Number(r.workOpen) || Number(r.enterDone)) return 'กำลังทำ';
+  return r.type || r.st || 'Service';
+}
+function jobView(table, r){
+  if (table === 'service'){
+    const lines = String(r.customer || '').split(/\n/).map(s => s.trim()).filter(Boolean);
+    const proj = lines.length > 1 ? lines.slice(1).join(' ') : (r.detail || '');
+    return {table, id: r.id, so: String(r.so || '').trim(), comp: lines[0] || '', proj, status: svcStatus(r), raw: r};
+  }
+  return {table, id: r.id, so: String(r.so || '').trim(), comp: r.comp || '', proj: r.proj || '', status: r.st || '', raw: r};
+}
+function rowsForLink(link){
+  return ROWS.filter(r => {
+    if (!r.z || !D.ZC[r.z] || r.z !== link.zone) return false;
+    if (link.hotel && (r.hotel || '').trim() !== link.hotel) return false;
+    if (link.hotelIncludes && !peNorm(r.hotel).includes(peNorm(link.hotelIncludes))) return false;
+    if (link.companyIncludes && !peNorm(r.c).includes(peNorm(link.companyIncludes))) return false;
+    return true;
+  });
+}
+function findBySo(list, table, row){
+  const so = String(row.so || '').trim();
+  if (so){
+    const hits = list.filter(l => l.table === table && String(l.so || '').trim() === so);
+    if (hits.length) return hits[0];
+  }
+  if (!so && row.id != null){
+    const hits = list.filter(l => l.table === table && !String(l.so || '').trim() && String(l.id) === String(row.id));
+    if (hits.length) return hits[0];
+  }
+  return null;
+}
+function placeByAlias(text){
+  const t = ' ' + peNorm(text) + ' ';
+  let best = null, nlen = 0;
+  pePlaces.forEach(p => (p.aliases || []).forEach(a => {
+    const n = peNorm(a);
+    if (n.length < 5) return;
+    if (t.includes(' ' + n + ' ') && n.length > nlen){ best = p; nlen = n.length; }
+  }));
+  return best;
+}
+function ensureRelated(rows){
+  if (rows.some(r => String(r.so || '').trim() === 'SO2604-065')) return rows;
+  const host = rows.find(r => String(r.so || '').trim() === 'SO2605-054');
+  rows.push({
+    id: 'rel-SO2604-065',
+    so: 'SO2604-065',
+    comp: host ? host.comp : 'คุณฉัตรชัย งานวงศ์พาณิชย์',
+    proj: (host && host.proj ? host.proj : 'บ้านคุณโจ้') + ' (เฉพาะสินค้า)',
+    st: 'เฉพาะสินค้า',
+    src: 'ปี 2026'
+  });
+  return rows;
+}
+function applyPe(projectRows, serviceRows){
+  ROWS.forEach(r => { r.peJobs = []; });
+  pePins = []; peMiss = [];
+  const jobs = ensureRelated(projectRows.filter(r => r && r.src !== '__roster__')).map(r => jobView('project', r))
+    .concat(serviceRows.map(r => jobView('service', r)));
+  jobs.forEach(j => {
+    const link = findBySo(peLinks, j.table, j);
+    if (link){
+      const custs = rowsForLink(link);
+      if (custs.length){
+        j.linked = true;
+        custs.forEach(c => c.peJobs.push(j));
+        return;
+      }
+    }
+    const site = findBySo(peSites, j.table, j);
+    let place = site ? pePlaces.find(p => p.id === site.place) : null;
+    if (!place) place = placeByAlias(j.comp + ' ' + j.proj);
+    if (place){ pePins.push({place, job: j}); return; }
+    peMiss.push(j);
+  });
+  peLoaded = true;
+  renderNoLoc();
+}
+function drawPePins(bounds){
+  pePlaceGroups = [];
+  if (!pePins.length) return;
+  const by = new Map();
+  pePins.forEach(pin => {
+    if (!by.has(pin.place.id)) by.set(pin.place.id, {place: pin.place, jobs: []});
+    by.get(pin.place.id).jobs.push(pin.job);
+  });
+  let i = 0;
+  by.forEach(g => {
+    const seen = new Set();
+    const uniq = [];
+    g.jobs.forEach(j => {
+      const k = j.so || j.id;
+      if (seen.has(k)) return;
+      seen.add(k); uniq.push(j);
+    });
+    g.jobs = uniq;
+    const lat = g.place.lat + (i % 5) * 0;
+    const lng = g.place.lng;
+    i++;
+    const approx = g.place.precision === 'approximate';
+    const m = L.circleMarker([lat, lng], {
+      radius: approx ? 7 : 8,
+      color: '#9a6b00',
+      weight: 2,
+      dashArray: approx ? '3 3' : null,
+      fillColor: '#fab219',
+      fillOpacity: approx ? 0.55 : 0.92
+    });
+    const dash = uniq.every(j => j.table === 'service') ? PE_DASH + '#service' : PE_DASH;
+    const src = g.place.sourceUrl
+      ? '<a href="' + esc(g.place.sourceUrl) + '" target="_blank" rel="noopener">' + esc(g.place.source || 'แหล่งพิกัด') + '</a>'
+      : esc(g.place.source || '');
+    m.bindPopup(
+      '<div style="font-size:14px;font-weight:650;margin-bottom:2px">' + esc(g.place.name) + '</div>' +
+      '<div class="approx-tag">' + (approx ? 'โดยประมาณ · ' : '') + esc(g.place.area || '') + '</div>' +
+      (g.place.note ? '<div class="approx-tag">' + esc(g.place.note) + '</div>' : '') +
+      '<div class="pejobs">' + uniq.slice(0, 8).map(j =>
+        '<div class="pejob"><b>' + esc(j.so || 'ไม่มีเลข SO') + '</b> · ' + esc(j.status) +
+        (j.proj ? ' · ' + esc(j.proj) : '') + '</div>').join('') +
+      '<div class="approx-tag">พิกัด: ' + src + '</div>' +
+      '<a href="' + dash + '" target="_blank" rel="noopener">เปิด PE Jobs ↗</a></div>',
+      {maxWidth: 320, closeButton: false});
+    m.bindTooltip(g.place.name + (approx ? ' · โดยประมาณ' : ''), {direction: 'top', offset: [0, -8]});
+    m.addTo(layer);
+    bounds.push([lat, lng]);
+    g.lat = lat; g.lng = lng;
+    pePlaceGroups.push(g);
+  });
+}
+function peListHtml(){
+  if (!pePlaceGroups.length) return '';
+  return '<div class="zrow" style="cursor:default;color:var(--muted);font-size:12px">งาน PE ที่เพิ่มบนแผนที่</div>' +
+    pePlaceGroups.map(g =>
+      '<div class="zrow" data-ll="' + g.lat + ',' + g.lng + '"><div style="min-width:0"><b>' + esc(g.place.name) + '</b>' +
+      '<div class="approx-tag">' + (g.place.precision === 'approximate' ? 'โดยประมาณ · ' : '') +
+      esc(g.jobs.map(j => j.so).filter(Boolean).slice(0, 2).join(', ')) + '</div></div>' +
+      '<div class="n">' + g.jobs.length + '</div></div>').join('');
+}
+function renderNoLoc(){
+  const card = document.getElementById('nolocCard');
+  const btn = document.getElementById('nolocJump');
+  if (!card) return;
+  const n = peMiss.length;
+  card.hidden = !n;
+  if (btn) btn.hidden = !n;
+  if (!n) return;
+  const count = document.getElementById('nolocCount');
+  if (count) count.textContent = '(' + nf(n) + ')';
+  if (btn) btn.textContent = 'ยังไม่มีตำแหน่ง (' + nf(n) + ')';
+  const desc = document.getElementById('nolocDesc');
+  if (desc) desc.textContent = 'งานจาก PE Jobs ที่ยังหาที่ตั้งไม่ได้ จึงไม่ปักหมุด' + (peFrom === 'file' ? ' · ใช้ไฟล์สำรอง เพราะโหลดชีตไม่สำเร็จ' : '');
+  document.getElementById('nolocBody').innerHTML = peMiss.map(j =>
+    '<tr><td>' + esc(j.so || '—') + '</td><td>' + esc(j.comp) + '</td><td>' + esc(j.proj) + '</td><td>' + esc(j.status) + '</td></tr>'
+  ).join('');
+}
+function peGet(table){
+  const url = PE_API + '?table=' + encodeURIComponent(table);
+  const fetchP = fetch(url, {method: 'GET', redirect: 'follow', cache: 'no-store', credentials: 'omit'})
+    .then(r => { if (!r.ok) throw new Error('status'); return r.json(); });
+  const jsonp = new Promise((resolve, reject) => {
+    const cb = 'salesMapPe_' + table + '_' + Date.now();
+    const s = document.createElement('script');
+    const timer = setTimeout(() => { cleanup(); reject(new Error('timeout')); }, 20000);
+    function cleanup(){
+      clearTimeout(timer);
+      try { delete window[cb]; } catch (e) { window[cb] = undefined; }
+      if (s.parentNode) s.parentNode.removeChild(s);
+    }
+    window[cb] = data => { cleanup(); resolve(data); };
+    s.onerror = () => { cleanup(); reject(new Error('jsonp')); };
+    s.src = url + '&callback=' + encodeURIComponent(cb);
+    document.head.appendChild(s);
+  });
+  return Promise.race([
+    fetchP.catch(() => jsonp),
+    new Promise((_, reject) => setTimeout(() => reject(new Error('slow')), 12000))
+  ]).catch(() => jsonp);
+}
+async function loadJson(path){
+  const res = await fetch(path, {cache: 'no-cache'});
+  if (!res.ok) throw new Error(path);
+  return res.json();
+}
+async function loadPe(){
+  try {
+    const [links, places, sites] = await Promise.all([
+      loadJson('data/job-links.json'),
+      loadJson('data/places.json'),
+      loadJson('data/job-sites.json')
+    ]);
+    peLinks = links.links || [];
+    pePlaces = places.places || [];
+    peSites = sites.sites || [];
+  } catch (e) { return; }
+  let project, service, from = 'live';
+  const forceFile = /(?:\?|&)pe=file(?:&|$)/.test(location.search);
+  try {
+    if (forceFile) throw new Error('file');
+    project = await peGet('jobs');
+    service = await peGet('service');
+    if (!project || !project.ok || !service || !service.ok) throw new Error('bad');
+  } catch (e) {
+    try {
+      const fb = await loadJson('data/pe-fallback.json');
+      project = fb.project; service = fb.service; from = 'file';
+    } catch (e2) { return; }
+  }
+  peFrom = from;
+  applyPe(project.rows || [], service.rows || []);
+  const base = $('#mapNote').innerHTML;
+  const extra = ' · งาน PE โหลดจาก' + (from === 'live' ? 'ชีตตอนเปิดหน้า' : 'ไฟล์สำรอง') +
+    ' หมุดเหลืองคือหน้างานที่ยังไม่มีในรายชื่อลูกค้า';
+  if (!base.includes('งาน PE')) $('#mapNote').innerHTML = base + extra;
+  drawMap(); renderTable();
+}
+const nolocCtl = L.control({position: 'topright'});
+nolocCtl.onAdd = function(){
+  const d = L.DomUtil.create('button', 'noloc-jump');
+  d.type = 'button'; d.id = 'nolocJump'; d.hidden = true;
+  d.textContent = 'ยังไม่มีตำแหน่ง';
+  L.DomEvent.disableClickPropagation(d);
+  L.DomEvent.on(d, 'click', () => {
+    const el = document.getElementById('nolocCard');
+    if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+  return d;
+};
+nolocCtl.addTo(map);
+loadPe();
 
 $('#mapNote').innerHTML = 'ตำแหน่งคำนวณจาก <b>พื้นที่/โซน</b> ที่กรอกไว้ ยังไม่ใช่พิกัดจริงของแต่ละโรงแรม — โหมด "รายลูกค้า" จะกระจายจุดรอบใจกลางโซนเพื่อให้คลิกดูทีละรายได้ · เติมคอลัมน์ Latitude/Longitude มาเมื่อไหร่ หมุดจะตรงตำแหน่งจริงทันที' +
   (outsideCount ? ' · แผนที่แสดงเฉพาะภาคใต้ จึงไม่รวม <b>' + outsideCount + ' ราย</b> ที่อยู่นอกภาคใต้ (ดูได้ในตารางด้านล่าง)' : '');

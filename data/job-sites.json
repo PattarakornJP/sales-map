@@ -1,0 +1,172 @@
+{
+  "sites": [
+    {
+      "table": "project",
+      "so": "SO2601-027",
+      "place": "avadina"
+    },
+    {
+      "table": "project",
+      "so": "SO2601-026",
+      "place": "zenithy"
+    },
+    {
+      "table": "project",
+      "so": "SO2601-123",
+      "place": "baan-nam-yen"
+    },
+    {
+      "table": "project",
+      "so": "SO2602-088",
+      "place": "samui-hospital"
+    },
+    {
+      "table": "project",
+      "so": "OE2501-020",
+      "place": "samui-hospital"
+    },
+    {
+      "table": "project",
+      "so": "SO2603-114",
+      "place": "dinnano"
+    },
+    {
+      "table": "project",
+      "so": "SO2603-116 สินค้า",
+      "place": "ptt-saithai"
+    },
+    {
+      "table": "project",
+      "so": "SO2603-117 ค่าติดตั้ง",
+      "place": "ptt-saithai"
+    },
+    {
+      "table": "project",
+      "so": "SO2603-123",
+      "place": "raintree"
+    },
+    {
+      "table": "project",
+      "so": "SO2603-125",
+      "place": "area-chalong"
+    },
+    {
+      "table": "project",
+      "so": "SO2604-033",
+      "place": "cape-yamu"
+    },
+    {
+      "table": "project",
+      "so": "SO2605-017",
+      "place": "area-patong"
+    },
+    {
+      "table": "project",
+      "so": "SO2605-043",
+      "place": "amanpuri"
+    },
+    {
+      "table": "project",
+      "so": "SO2605-090",
+      "place": "zenmaya"
+    },
+    {
+      "table": "project",
+      "so": "SO2606-087",
+      "place": "avani-maikhao"
+    },
+    {
+      "table": "project",
+      "so": "SO2608-054",
+      "place": "area-chalong"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-029",
+      "place": "rmar"
+    },
+    {
+      "table": "project",
+      "so": "SO2609-068",
+      "place": "baan-paa-talee"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-005",
+      "place": "explorar"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-033",
+      "place": "courtyard-town"
+    },
+    {
+      "table": "project",
+      "so": "SO2510-096",
+      "place": "vana-belle"
+    },
+    {
+      "table": "project",
+      "so": "SO2512-118",
+      "place": "area-kamala"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-086",
+      "place": "hotel-tide"
+    },
+    {
+      "table": "service",
+      "so": "SO2608-101",
+      "place": "centara-grand-phuket"
+    },
+    {
+      "table": "service",
+      "so": "SO2609-103",
+      "place": "centara-grand-phuket"
+    },
+    {
+      "table": "service",
+      "so": "PSE - PHK6909-006",
+      "place": "baan-nam-yen"
+    },
+    {
+      "table": "service",
+      "so": "SO2609-116",
+      "place": "wyndham-kalim"
+    },
+    {
+      "table": "service",
+      "so": "SO2610-047",
+      "place": "wyndham-kalim"
+    },
+    {
+      "table": "service",
+      "id": 31,
+      "so": "",
+      "place": "palmetto"
+    },
+    {
+      "table": "service",
+      "id": 33,
+      "so": "",
+      "place": "area-kohkaew"
+    },
+    {
+      "table": "project",
+      "so": "SO2509-020",
+      "place": "ban-wisanu"
+    },
+    {
+      "table": "project",
+      "so": "SO2605-054",
+      "place": "ban-jo"
+    },
+    {
+      "table": "project",
+      "so": "SO2604-065",
+      "place": "ban-jo",
+      "note": "เฉพาะสินค้า อ้างอิงจากงานติดตั้ง SO2605-054"
+    }
+  ]
+}
