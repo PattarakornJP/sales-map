@@ -519,17 +519,17 @@
       ]
     },
     {
-      "id": "jw-marriott-maikhao",
-      "name": "JW Marriott Phuket Resort & Spa",
+      "id": "phuket-marriott-naiyang",
+      "name": "Phuket Marriott Resort and Spa, Nai Yang Beach",
       "precision": "exact",
-      "lat": 8.1661545,
-      "lng": 98.2952039,
-      "area": "ไม้ขาว ในยาง ถลาง",
-      "source": "user (hotel name), geocoded",
-      "note": "ไม้ขาว / ในยาง ถลาง",
+      "lat": 8.0812868,
+      "lng": 98.2886169,
+      "area": "ในยาง ถลาง",
+      "source": "user",
+      "sourceUrl": "https://maps.app.goo.gl/xiMPGzMdN2aMKkjv9",
       "aliases": [
-        "jw marriott phuket",
-        "jw marriott"
+        "phuket marriott resort and spa, nai yang",
+        "nai yang beach marriott"
       ]
     }
   ]
