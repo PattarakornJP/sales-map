@@ -177,6 +177,11 @@
       "table": "project",
       "so": "SO2603-119 ค่าติดตั้ง",
       "place": "alisea"
+    },
+    {
+      "table": "service",
+      "so": "PSE - PHK6909-001",
+      "place": "jw-marriott-maikhao"
     }
   ]
 }

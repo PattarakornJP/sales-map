@@ -517,6 +517,20 @@
         "อลิซี พลู",
         "alisea pool villas"
       ]
+    },
+    {
+      "id": "jw-marriott-maikhao",
+      "name": "JW Marriott Phuket Resort & Spa",
+      "precision": "exact",
+      "lat": 8.1661545,
+      "lng": 98.2952039,
+      "area": "ไม้ขาว ในยาง ถลาง",
+      "source": "user (hotel name), geocoded",
+      "note": "ไม้ขาว / ในยาง ถลาง",
+      "aliases": [
+        "jw marriott phuket",
+        "jw marriott"
+      ]
     }
   ]
 }
