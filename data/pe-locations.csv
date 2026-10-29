@@ -113,9 +113,7 @@ SO2610-011,บริษัท เดอะ แพลทินัม สมุย
 SO2610-052,บริษัท แพลนนิ่ง เอ็นจิเนียริ่ง ดีเวลล็อปเม็นท จำกัด,Patong Beach Hotel,7.8923613,98.2957103,OpenStreetMap node 1110152464 Patong Beach Hotel,exact
 Presale,"THREE DOLPHINS RESORT CO., LTD. โรงแรมตรีสรา รีสอร์ท",ตรวจเช็ค Chiller No.1 มีน้ำรั่วออกจาก Plate Heat Exchanger,8.0349106,98.2772827,OpenStreetMap way 534911049 Trisara,exact
 OE2311-093,คุณบรรจง บูรณถาวรสม Project : Ocean and Ole Patong,น้ำไม่ร้อน,7.8967,98.2966,จุดกลางพื้นที่บนแผนที่ลูกค้า,approximate
-,บริษัท กระบี่รีสอร์ท จำกัด Project : Krabi Resort Zone Villa,"Heat Pump ใช้งานไม่ได้ทั้ง 2 เครื่อง
-เครื่องที่ 01 คอมเพรสเซอร์รั่วที่หัวหลักคอม
-เครื่องที่ 02 Er.06",8.032,98.82,จุดกลางพื้นที่บนแผนที่ลูกค้า,approximate
+,บริษัท กระบี่รีสอร์ท จำกัด Project : Krabi Resort Zone Villa,Heat Pump ใช้งานไม่ได้ทั้ง 2 เครื่องเครื่องที่ 01 คอมเพรสเซอร์รั่วที่หัวหลักคอมเครื่องที่ 02 Er.06,8.032,98.82,จุดกลางพื้นที่บนแผนที่ลูกค้า,approximate
 SO2601-027,PAE VILLA LANTA PTE. LTD.,Avadina Res.8,8.035583,98.284319,ที่อยู่ Avadina Hills 59/7 หมู่ 6 ซอยหาดลายัน 4 ใช้ GPS ของ Anantara Layan ซึ่งอยู่ซอยเดียวกัน เป็นจุดโดยประมาณ ไม่ใช่แปลงวิลล่าเลข 8,approximate
 SO2601-026,คุณน้ำ,Zenithy Pool Villa S27,8.0042802,98.3092812,ที่อยู่โครงการ 79/2 หมู่ 4 ซอยป่าสัก 8 เชิงทะเล ปักใกล้ซอยป่าสักบน OpenStreetMap way 136439735,approximate
 SO2601-123,Wilailak Ferrier,Baan Nam Yen Khun Wi,7.8949476,98.2988023,โครงการ Baan Nam Yen Villas อยู่ป่าตอง (รายการ FazWaz) ยังไม่มีพิกัดอาคาร จึงปักที่ตัวเมืองป่าตอง OpenStreetMap node 313345814,approximate
@@ -146,8 +144,8 @@ SO2608-101,Centara Grand Beach Resort Phuket Building 1.4,งานซ่อม 
 SO2609-103,Centara Grand Beach Resort Phuket Building 1.4,เปลี่ยน Control Display/PCB Board,7.8577398,98.2906613,OpenStreetMap node 6109432923 ที่ 683 ถนนป่าตัก กะรน,exact
 PSE - PHK6909-006,Wilailak Ferrier Projcet : Baan Nam Yen Khun Wi,Display Controller,7.8949476,98.2988023,โครงการ Baan Nam Yen Villas อยู่ป่าตอง (รายการ FazWaz) ยังไม่มีพิกัดอาคาร จึงปักที่ตัวเมืองป่าตอง OpenStreetMap node 313345814,approximate
 SO2609-116,บริษัท พริสร จำกัด Wyndham Grand Phuket Kalim ตึก F,งานเปลี่ยนตู้ควบคุมระบบ Electric Controller Box,7.923185,98.279247,พิกัดแผนที่ของ Wyndham Grand Phuket Kalim Bay ที่อยู่ 8/18-19 หมู่ 6 กมลา,exact
-SO2610-047,บริษัท พริสร จำกัด Wyndham Grand Phuket Kalim,"ตึก K เปลี่ยน Heater
-ตึก L เปลี่ยน Control Display, Board
-ตึก J เปลี่ยน Tube in Shell Heat Exchanger",7.923185,98.279247,พิกัดแผนที่ของ Wyndham Grand Phuket Kalim Bay ที่อยู่ 8/18-19 หมู่ 6 กมลา,exact
+SO2610-047,บริษัท พริสร จำกัด Wyndham Grand Phuket Kalim,"ตึก K เปลี่ยน Heaterตึก L เปลี่ยน Control Display, Boardตึก J เปลี่ยน Tube in Shell Heat Exchanger",7.923185,98.279247,พิกัดแผนที่ของ Wyndham Grand Phuket Kalim Bay ที่อยู่ 8/18-19 หมู่ 6 กมลา,exact
 ,ปาล์มเมตโต้ ปาร์ค คอนโดมิเนียม ห้อง 404,ถังน้ำร้อน 30 ลิตร รั่วที่ข้อต่อ,7.835509,98.3009553,OpenStreetMap way 1124974393 Palmetto Park Condominium,exact
 ,บริษัท ชัยนริศภูเก็ต เอ็นจิเนียริ่ง จำกัด Project : บ้านคุณหมอเลอศักดิ์ แลนด์ แอนด์ เฮ้าส์ เกาะแก้ว ภูเก็ต เลขที่ 88/118,ตรวจเช็ค ABSOLUTT  270 L. หน้าจอไม่ติด พร้อมช่าง CNR,7.9518028,98.3752445,OpenStreetMap relation 17100968 ตำบลเกาะแก้ว บ้านเลขที่ 88/118 ยังไม่พบจุดอาคาร,approximate
+SO2603-118 สินค้า,บริษัท อันดามานา จำกัด,โรงแรม อลิซี พลู วิลล่า,8.0579406,98.7941873,user,exact
+SO2603-119 ค่าติดตั้ง,บริษัท อันดามานา จำกัด,โรงแรม อลิซี พลู วิลล่า,8.0579406,98.7941873,user,exact

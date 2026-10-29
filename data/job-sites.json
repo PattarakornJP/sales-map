@@ -167,6 +167,16 @@
       "so": "SO2604-065",
       "place": "ban-jo",
       "note": "เฉพาะสินค้า อ้างอิงจากงานติดตั้ง SO2605-054"
+    },
+    {
+      "table": "project",
+      "so": "SO2603-118 สินค้า",
+      "place": "alisea"
+    },
+    {
+      "table": "project",
+      "so": "SO2603-119 ค่าติดตั้ง",
+      "place": "alisea"
     }
   ]
 }

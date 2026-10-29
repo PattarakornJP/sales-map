@@ -502,6 +502,21 @@
       "aliases": [
         "บ้านคุณโจ้"
       ]
+    },
+    {
+      "id": "alisea",
+      "name": "Alisea Pool Villas",
+      "precision": "exact",
+      "lat": 8.0579406,
+      "lng": 98.7941873,
+      "area": "อ่าวนาง กระบี่",
+      "source": "user",
+      "sourceUrl": "https://maps.app.goo.gl/t3FNQo8qrwq4oDwYA",
+      "aliases": [
+        "alisea pool",
+        "อลิซี พลู",
+        "alisea pool villas"
+      ]
     }
   ]
 }
