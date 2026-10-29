@@ -1,0 +1,507 @@
+{
+  "places": [
+    {
+      "id": "amanpuri",
+      "name": "Amanpuri",
+      "precision": "exact",
+      "lat": 7.9862081,
+      "lng": 98.2728216,
+      "area": "เชิงทะเล ภูเก็ต",
+      "source": "OpenStreetMap relation 13958460 Amanpuri Resort",
+      "sourceUrl": "https://www.openstreetmap.org/relation/13958460",
+      "aliases": [
+        "amanpuri"
+      ]
+    },
+    {
+      "id": "cape-yamu",
+      "name": "Cape Yamu (COMO Point Yamu)",
+      "precision": "exact",
+      "lat": 7.9848393948,
+      "lng": 98.4211484309,
+      "area": "แหลมยามู ภูเก็ต",
+      "source": "Wikidata Q111403094 COMO Point Yamu (Cape Yamu ชื่อเดิม)",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q111403094",
+      "aliases": [
+        "cape yamu",
+        "point yamu",
+        "เคปยามู",
+        "เคป ยามู"
+      ]
+    },
+    {
+      "id": "zenmaya",
+      "name": "Zenmaya Oceanfront Phuket",
+      "precision": "exact",
+      "lat": 7.922666022,
+      "lng": 98.27901492,
+      "area": "กมลา ภูเก็ต",
+      "source": "พิกัดบนหน้าเว็บโรงแรม zenmayaphuket.com",
+      "sourceUrl": "https://www.zenmayaphuket.com/dining",
+      "aliases": [
+        "zenmaya",
+        "เซนมายา"
+      ]
+    },
+    {
+      "id": "avani-maikhao",
+      "name": "Avani+ Mai Khao Phuket",
+      "precision": "exact",
+      "lat": 8.168667,
+      "lng": 98.295566,
+      "area": "ไม้ขาว ภูเก็ต",
+      "source": "พิกัดสองแหล่งตรงกันที่อยู่ 887 หมู่ 3 ไม้ขาว (8.168755,98.295444 และ 8.168579,98.295689)",
+      "sourceUrl": "https://www.travelmyth.com/Mai-Khao-Beach/Hotels/Avani-Plus-Mai-Khao-Phuket-Suites_tmid2939214",
+      "aliases": [
+        "avani+ mai khao",
+        "avani mai khao",
+        "avani+ mai khoa",
+        "avani mai khoa",
+        "อวานี ไม้ขาว",
+        "avani+ mai khoa"
+      ]
+    },
+    {
+      "id": "courtyard-town",
+      "name": "Courtyard by Marriott Phuket Town",
+      "precision": "exact",
+      "lat": 7.8808182,
+      "lng": 98.393037,
+      "area": "เมืองภูเก็ต",
+      "source": "OpenStreetMap way 475819205",
+      "sourceUrl": "https://www.openstreetmap.org/way/475819205",
+      "aliases": [
+        "courtyard by marriott phuket town",
+        "courtyard by marriott phuket"
+      ]
+    },
+    {
+      "id": "vana-belle",
+      "name": "Vana Belle, a Luxury Collection Resort",
+      "precision": "exact",
+      "lat": 9.50738,
+      "lng": 100.05567,
+      "area": "เกาะสมุย",
+      "source": "Wikidata Q111403540",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q111403540",
+      "aliases": [
+        "vana belle",
+        "วานา เบลล์"
+      ]
+    },
+    {
+      "id": "hotel-tide",
+      "name": "Hotel Tide Phuket",
+      "precision": "exact",
+      "lat": 7.87443,
+      "lng": 98.42888,
+      "area": "เกาะสิเหร่ ภูเก็ต",
+      "source": "Wikidata Q111996551 Hotel Tide Phuket ตรวจกับที่อยู่ 168/3 หมู่ 1 รัษฎา",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q111996551",
+      "aliases": [
+        "hotel tide",
+        "the tide phuket"
+      ]
+    },
+    {
+      "id": "centara-grand-phuket",
+      "name": "Centara Grand Beach Resort Phuket",
+      "precision": "exact",
+      "lat": 7.8577398,
+      "lng": 98.2906613,
+      "area": "กะรน ภูเก็ต",
+      "source": "OpenStreetMap node 6109432923 ที่ 683 ถนนป่าตัก กะรน",
+      "sourceUrl": "https://www.openstreetmap.org/node/6109432923",
+      "aliases": [
+        "centara grand beach resort phuket",
+        "centara grand phuket"
+      ]
+    },
+    {
+      "id": "rmar",
+      "name": "R-Mar Resort and Spa",
+      "precision": "exact",
+      "lat": 7.8953388,
+      "lng": 98.298252,
+      "area": "ป่าตอง ภูเก็ต",
+      "source": "OpenStreetMap way 1043792165 ตรงที่อยู่ 33 ซอยราษฎร์อุทิศ 200 ปี",
+      "sourceUrl": "https://www.openstreetmap.org/way/1043792165",
+      "aliases": [
+        "r-mar",
+        "r mar resort",
+        "rmar resort"
+      ]
+    },
+    {
+      "id": "samui-hospital",
+      "name": "โรงพยาบาลเกาะสมุย",
+      "precision": "exact",
+      "lat": 9.5219221,
+      "lng": 99.9355204,
+      "area": "เกาะสมุย",
+      "source": "OpenStreetMap node 1528148436 Koh Samui Hospital",
+      "sourceUrl": "https://www.openstreetmap.org/node/1528148436",
+      "aliases": [
+        "samui hospital",
+        "koh samui hospital",
+        "โรงพยาบาลเกาะสมุย"
+      ]
+    },
+    {
+      "id": "palmetto",
+      "name": "Palmetto Park Condominium",
+      "precision": "exact",
+      "lat": 7.835509,
+      "lng": 98.3009553,
+      "area": "กะรน ภูเก็ต",
+      "source": "OpenStreetMap way 1124974393 Palmetto Park Condominium",
+      "sourceUrl": "https://www.openstreetmap.org/way/1124974393",
+      "aliases": [
+        "palmetto park",
+        "ปาล์มเมตโต้"
+      ]
+    },
+    {
+      "id": "baan-paa-talee",
+      "name": "Baan Paa Talee Estate",
+      "precision": "exact",
+      "lat": 7.928808,
+      "lng": 98.262529,
+      "area": "กมลา ภูเก็ต",
+      "source": "พิกัดที่เผยแพร่ของ Baan Paa Talee Estate 28/19 หมู่ 6 Cape Amarin กมลา",
+      "sourceUrl": "https://www.travelmyth.com/Kamala-Beach/Hotels/Baan-Paa-Talee-Estate-SHA-Extra-Plus_tmid1060015",
+      "aliases": [
+        "baan paa talee",
+        "baan pa talee",
+        "บ้านป่าตาลี"
+      ]
+    },
+    {
+      "id": "explorar",
+      "name": "Explorar Koh Samui",
+      "precision": "exact",
+      "lat": 9.562563896179,
+      "lng": 99.974456787109,
+      "area": "แม่น้ำ เกาะสมุย",
+      "source": "พิกัด HotelPlanner ของ Explorar Koh Samui ตรงที่อยู่ 44/133 หมู่ 1 หาดแม่น้ำ",
+      "sourceUrl": "https://www.hotelplanner.com/Hotels/352298/Reservations-Explorar-Koh-Samui-Koh-Samui-84330-84330",
+      "aliases": [
+        "explorar samui",
+        "explorar koh samui",
+        "the explorar"
+      ]
+    },
+    {
+      "id": "ptt-saithai",
+      "name": "ปตท. ไสไทย–อ่าวนาง",
+      "precision": "exact",
+      "lat": 8.0796771,
+      "lng": 98.8565771,
+      "area": "ไสไทย กระบี่",
+      "source": "OpenStreetMap node 633029476 สถานีน้ำมัน PTT บนถนน 4034 ช่วงไสไทย–อ่าวนาง",
+      "sourceUrl": "https://www.openstreetmap.org/node/633029476",
+      "aliases": [
+        "ptt ไสไทย",
+        "ปั้มptt ไสไทย",
+        "ปตท ไสไทย",
+        "ปตท. ไสไทย"
+      ]
+    },
+    {
+      "id": "wyndham-kalim",
+      "name": "Wyndham Grand Phuket Kalim Bay",
+      "precision": "exact",
+      "lat": 7.923185,
+      "lng": 98.279247,
+      "area": "กมลา ภูเก็ต",
+      "source": "พิกัดแผนที่ของ Wyndham Grand Phuket Kalim Bay ที่อยู่ 8/18-19 หมู่ 6 กมลา",
+      "sourceUrl": "https://www.wyndhamgrandphuket.com/contact-location",
+      "aliases": [
+        "wyndham grand phuket kalim",
+        "wyndham grand kalim",
+        "wyndham grand phuket"
+      ]
+    },
+    {
+      "id": "anantara-layan",
+      "name": "Anantara Layan Phuket Resort",
+      "precision": "exact",
+      "lat": 8.035583,
+      "lng": 98.284319,
+      "area": "หาดลายัน ภูเก็ต",
+      "source": "GPS บนหน้าติดต่อ Anantara Layan",
+      "sourceUrl": "https://www.anantara.com/en/layan-phuket/contact",
+      "aliases": [
+        "anantara layan"
+      ]
+    },
+    {
+      "id": "avc-maikhao",
+      "name": "Anantara Vacation Club Mai Khao",
+      "precision": "exact",
+      "lat": 8.1662015,
+      "lng": 98.2973735,
+      "area": "ไม้ขาว ภูเก็ต",
+      "source": "OpenStreetMap node 9425341398",
+      "sourceUrl": "https://www.openstreetmap.org/node/9425341398",
+      "aliases": [
+        "anantara vacation club mai khao",
+        "anantara vacation club maikhao"
+      ]
+    },
+    {
+      "id": "phulay",
+      "name": "Phulay Bay, a Ritz-Carlton Reserve",
+      "precision": "exact",
+      "lat": 8.08563,
+      "lng": 98.74406,
+      "area": "กระบี่",
+      "source": "Wikidata Q111403609",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q111403609",
+      "aliases": [
+        "phulay bay",
+        "ภูเล เบย์"
+      ]
+    },
+    {
+      "id": "rpm",
+      "name": "Royal Phuket Marina",
+      "precision": "exact",
+      "lat": 7.9632772,
+      "lng": 98.3868038,
+      "area": "เกาะแก้ว ภูเก็ต",
+      "source": "OpenStreetMap node 717838423",
+      "sourceUrl": "https://www.openstreetmap.org/node/717838423",
+      "aliases": [
+        "royal phuket marina",
+        "รอยัล ภูเก็ต มารีน่า",
+        "รอยัลภูเก็ตมารีน่า"
+      ]
+    },
+    {
+      "id": "the-kee",
+      "name": "The Kee Resort & Spa Patong",
+      "precision": "exact",
+      "lat": 7.895018,
+      "lng": 98.296936,
+      "area": "ป่าตอง ภูเก็ต",
+      "source": "GPS บนหน้าติดต่อ The Kee Resort",
+      "sourceUrl": "https://www.thekeeresort.com/contact.php",
+      "aliases": [
+        "the kee resort",
+        "the kee patong",
+        "kee patong"
+      ]
+    },
+    {
+      "id": "trisara",
+      "name": "Trisara",
+      "precision": "exact",
+      "lat": 8.0349106,
+      "lng": 98.2772827,
+      "area": "ในทอน ภูเก็ต",
+      "source": "OpenStreetMap way 534911049 Trisara",
+      "sourceUrl": "https://www.openstreetmap.org/way/534911049",
+      "aliases": [
+        "trisara",
+        "ตรีสรา"
+      ]
+    },
+    {
+      "id": "patong-beach-hotel",
+      "name": "Patong Beach Hotel",
+      "precision": "exact",
+      "lat": 7.8923613,
+      "lng": 98.2957103,
+      "area": "ป่าตอง ภูเก็ต",
+      "source": "OpenStreetMap node 1110152464 Patong Beach Hotel",
+      "sourceUrl": "https://www.openstreetmap.org/node/1110152464",
+      "aliases": [
+        "patong beach hotel"
+      ]
+    },
+    {
+      "id": "katathani",
+      "name": "Katathani Phuket Beach Resort",
+      "precision": "exact",
+      "lat": 7.8077241,
+      "lng": 98.2993202,
+      "area": "กะตะ ภูเก็ต",
+      "source": "OpenStreetMap way 1178717517 Katathani Phuket Beach Resort",
+      "sourceUrl": "https://www.openstreetmap.org/way/1178717517",
+      "aliases": [
+        "kata thani",
+        "katathani",
+        "กะตะธานี"
+      ]
+    },
+    {
+      "id": "alpha-health",
+      "name": "Alpha Health Club",
+      "precision": "exact",
+      "lat": 7.90071,
+      "lng": 98.3688,
+      "area": "วิชิต ภูเก็ต",
+      "source": "พิกัด Alpha Health Club 9/56 วิชิต",
+      "sourceUrl": "https://www.rawai.com/phuket-gyms/gyms/alpha-health-club/",
+      "aliases": [
+        "alpha health club",
+        "อัลฟ่า เฮลธ์ คลับ",
+        "alpha health"
+      ]
+    },
+    {
+      "id": "kram-anda",
+      "name": "Kram Anda",
+      "precision": "approximate",
+      "lat": 7.949931,
+      "lng": 98.2827611,
+      "area": "กมลา ภูเก็ต",
+      "source": "ลูกค้า Kram Anda อยู่กมลาบนแผนที่ลูกค้า ปักที่ตำบลกมลาเพราะยังไม่พบพิกัดอาคาร",
+      "sourceUrl": "https://www.openstreetmap.org/relation/14031380",
+      "aliases": [
+        "kram anda",
+        "ครามอันดา"
+      ]
+    },
+    {
+      "id": "avadina",
+      "name": "Avadina Hills (ซอยลายัน 4)",
+      "precision": "approximate",
+      "lat": 8.035583,
+      "lng": 98.284319,
+      "area": "หาดลายัน ภูเก็ต",
+      "source": "ที่อยู่ Avadina Hills 59/7 หมู่ 6 ซอยหาดลายัน 4 ใช้ GPS ของ Anantara Layan ซึ่งอยู่ซอยเดียวกัน เป็นจุดโดยประมาณ ไม่ใช่แปลงวิลล่าเลข 8",
+      "sourceUrl": "https://www.avadinahills.com/villas/villa-type-b.html",
+      "aliases": [
+        "avadina"
+      ]
+    },
+    {
+      "id": "zenithy",
+      "name": "Zenithy Pool Villas",
+      "precision": "approximate",
+      "lat": 8.0042802,
+      "lng": 98.3092812,
+      "area": "ป่าสัก เชิงทะเล ภูเก็ต",
+      "source": "ที่อยู่โครงการ 79/2 หมู่ 4 ซอยป่าสัก 8 เชิงทะเล ปักใกล้ซอยป่าสักบน OpenStreetMap way 136439735",
+      "sourceUrl": "https://www.windowonphuket.com/shopping/1675/zenithy-pool-villas",
+      "aliases": [
+        "zenithy"
+      ]
+    },
+    {
+      "id": "area-patong",
+      "name": "พื้นที่ป่าตอง",
+      "precision": "approximate",
+      "lat": 7.8949476,
+      "lng": 98.2988023,
+      "area": "ป่าตอง ภูเก็ต",
+      "source": "OpenStreetMap node 313345814 ตัวเมืองป่าตอง ใช้เมื่อรู้แค่พื้นที่",
+      "sourceUrl": "https://www.openstreetmap.org/node/313345814",
+      "aliases": []
+    },
+    {
+      "id": "baan-nam-yen",
+      "name": "Baan Nam Yen Villas",
+      "precision": "approximate",
+      "lat": 7.8949476,
+      "lng": 98.2988023,
+      "area": "ป่าตอง ภูเก็ต",
+      "source": "โครงการ Baan Nam Yen Villas อยู่ป่าตอง (รายการ FazWaz) ยังไม่มีพิกัดอาคาร จึงปักที่ตัวเมืองป่าตอง OpenStreetMap node 313345814",
+      "sourceUrl": "https://www.openstreetmap.org/node/313345814",
+      "aliases": [
+        "baan nam yen",
+        "บ้านน้ำเย็น"
+      ]
+    },
+    {
+      "id": "dinnano",
+      "name": "Dinnano Pool Villa",
+      "precision": "approximate",
+      "lat": 7.8085177,
+      "lng": 99.2013743,
+      "area": "คลองพน คลองท่อม กระบี่",
+      "source": "ที่อยู่ 89/9 หมู่ 2 คลองพน คลองท่อม ปักที่ตัวเมืองคลองพน OpenStreetMap node 9806056483",
+      "sourceUrl": "https://www.openstreetmap.org/node/9806056483",
+      "aliases": [
+        "dinnano",
+        "ดินนาโน"
+      ]
+    },
+    {
+      "id": "raintree",
+      "name": "Raintree Villa Phuket",
+      "precision": "approximate",
+      "lat": 7.8009536,
+      "lng": 98.3257538,
+      "area": "ราไวย์ ภูเก็ต",
+      "source": "ที่อยู่ซอยสามัคคี 1 ราไวย์ จากเว็บโครงการ ปักบนถนน OpenStreetMap way 90576681",
+      "sourceUrl": "https://www.raintreevillaphuket.com/",
+      "aliases": [
+        "raintree villa"
+      ]
+    },
+    {
+      "id": "area-chalong",
+      "name": "พื้นที่ฉลอง",
+      "precision": "approximate",
+      "lat": 7.8465199,
+      "lng": 98.3344152,
+      "area": "ฉลอง ภูเก็ต",
+      "source": "OpenStreetMap node 31040694 ตัวเมืองฉลอง ใช้เมื่อรู้แค่พื้นที่ฉลอง",
+      "sourceUrl": "https://www.openstreetmap.org/node/31040694",
+      "aliases": []
+    },
+    {
+      "id": "area-kamala",
+      "name": "พื้นที่กมลา",
+      "precision": "approximate",
+      "lat": 7.949931,
+      "lng": 98.2827611,
+      "area": "กมลา ภูเก็ต",
+      "source": "OpenStreetMap relation 14031380 ตำบลกมลา",
+      "sourceUrl": "https://www.openstreetmap.org/relation/14031380",
+      "aliases": []
+    },
+    {
+      "id": "area-kohkaew",
+      "name": "พื้นที่เกาะแก้ว",
+      "precision": "approximate",
+      "lat": 7.9518028,
+      "lng": 98.3752445,
+      "area": "เกาะแก้ว ภูเก็ต",
+      "source": "OpenStreetMap relation 17100968 ตำบลเกาะแก้ว บ้านเลขที่ 88/118 ยังไม่พบจุดอาคาร",
+      "sourceUrl": "https://www.openstreetmap.org/relation/17100968",
+      "aliases": [
+        "บ้านคุณหมอเลอศักดิ์",
+        "88/118"
+      ]
+    },
+    {
+      "id": "ban-wisanu",
+      "name": "บ้านพักส่วนตัวคุณวิษณุ แก้วศิริ",
+      "precision": "exact",
+      "lat": 8.44747,
+      "lng": 98.523113,
+      "area": "ซอยมนตรี 6",
+      "source": "user",
+      "sourceUrl": "https://maps.app.goo.gl/r52N6No5tpjdQUeJA",
+      "aliases": [],
+      "note": "ที่อยู่: ซอยมนตรี 6"
+    },
+    {
+      "id": "ban-jo",
+      "name": "บ้านคุณโจ้",
+      "precision": "exact",
+      "lat": 7.8341229,
+      "lng": 98.3305933,
+      "area": "ฉลอง ภูเก็ต",
+      "source": "user",
+      "sourceUrl": "https://maps.app.goo.gl/FhU8cHCvhfys8CVAA",
+      "aliases": [
+        "บ้านคุณโจ้"
+      ]
+    }
+  ]
+}
