@@ -806,6 +806,17 @@
       "zone": "อ่าวนาง",
       "hotel": "Krabi Resort",
       "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-109",
+      "zone": "บางเทา-ลากูน่า-เชิงทะเล",
+      "hotel": "Banyan Tree",
+      "how": "exact",
+      "lat": 8.0130233,
+      "lng": 98.2958261,
+      "precision": "approximate",
+      "source": "user"
     }
   ]
 }
