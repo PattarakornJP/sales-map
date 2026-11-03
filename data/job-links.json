@@ -817,6 +817,20 @@
       "lng": 98.2958261,
       "precision": "approximate",
       "source": "user"
+    },
+    {
+      "table": "project",
+      "so": "SO2611-008",
+      "zone": "กะตะ-กะรน",
+      "hotel": "The Shore at Katathani Resort",
+      "how": "approximate"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-113",
+      "zone": "เขาหลัก-พังงา",
+      "hotel": "Grand Mercure Khao Lak Bangsak",
+      "how": "exact"
     }
   ]
 }

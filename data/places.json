@@ -531,6 +531,18 @@
         "phuket marriott resort and spa, nai yang",
         "nai yang beach marriott"
       ]
+    },
+    {
+      "id": "natai-beach-house",
+      "name": "Natai Beach House",
+      "precision": "approximate",
+      "lat": 8.287,
+      "lng": 98.274,
+      "area": "หาดนาไต พังงา",
+      "source": "user",
+      "aliases": [
+        "natai beach house"
+      ]
     }
   ]
 }
