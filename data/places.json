@@ -543,6 +543,19 @@
       "aliases": [
         "natai beach house"
       ]
+    },
+    {
+      "id": "ban-sunisa",
+      "name": "บ้านส่วนตัวคุณสุนิสา ตรงข้ามซุปเปอร์ชีปใหญ่",
+      "precision": "approximate",
+      "lat": 7.92185,
+      "lng": 98.39645,
+      "area": "รัษฎา เมืองภูเก็ต",
+      "source": "user",
+      "aliases": [
+        "คุณสุนิสา",
+        "บ้านส่วนตัวคุณสุนิสา"
+      ]
     }
   ]
 }
