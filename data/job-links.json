@@ -831,6 +831,17 @@
       "zone": "เขาหลัก-พังงา",
       "hotel": "Grand Mercure Khao Lak Bangsak",
       "how": "exact"
+    },
+    {
+      "table": "project",
+      "so": "SO2611-061",
+      "zone": "อ่าวนาง",
+      "hotel": "Red Ginger",
+      "how": "exact",
+      "lat": 8.032,
+      "lng": 98.82,
+      "precision": "approximate",
+      "source": "pe-jobs data/locations.json Red Ginger (SO2510-095)"
     }
   ]
 }
