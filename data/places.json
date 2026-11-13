@@ -253,11 +253,10 @@
       "id": "phulay",
       "name": "Phulay Bay, a Ritz-Carlton Reserve",
       "precision": "exact",
-      "lat": 8.08563,
-      "lng": 98.74406,
+      "lat": 8.0851,
+      "lng": 98.7453,
       "area": "กระบี่",
-      "source": "Wikidata Q111403609",
-      "sourceUrl": "https://www.wikidata.org/wiki/Q111403609",
+      "source": "user",
       "aliases": [
         "phulay bay",
         "ภูเล เบย์"
