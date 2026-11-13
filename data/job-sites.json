@@ -197,6 +197,11 @@
       "table": "project",
       "so": "SO2611-058",
       "place": "ban-sunisa"
+    },
+    {
+      "table": "project",
+      "so": "SO2611-064",
+      "place": "phulay"
     }
   ]
 }
