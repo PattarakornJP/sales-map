@@ -202,6 +202,36 @@
       "table": "project",
       "so": "SO2611-064",
       "place": "phulay"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-044",
+      "place": "the-nature"
+    },
+    {
+      "table": "project",
+      "so": "SO2610-045",
+      "place": "the-nature"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-168",
+      "place": "the-nature"
+    },
+    {
+      "table": "project",
+      "so": "SO2511-169",
+      "place": "the-nature"
+    },
+    {
+      "table": "project",
+      "so": "SO2611-054",
+      "place": "the-nature"
+    },
+    {
+      "table": "project",
+      "so": "SO2611-055",
+      "place": "the-nature"
     }
   ]
 }
