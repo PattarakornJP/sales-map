@@ -555,6 +555,22 @@
         "คุณสุนิสา",
         "บ้านส่วนตัวคุณสุนิสา"
       ]
+    },
+    {
+      "id": "the-nature",
+      "name": "The Nature Patong",
+      "precision": "exact",
+      "lat": 7.9149857,
+      "lng": 98.2928654,
+      "area": "ป่าตอง ภูเก็ต",
+      "source": "Google Maps link",
+      "sourceUrl": "https://maps.app.goo.gl/mPTUsxYjGUv7UECo7",
+      "aliases": [
+        "the nature patong",
+        "the nature",
+        "เดอะเนเจอร์",
+        "โรงแรมเดอะเนเจอร์"
+      ]
     }
   ]
 }
