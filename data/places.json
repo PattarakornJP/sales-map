@@ -571,6 +571,19 @@
         "เดอะเนเจอร์",
         "โรงแรมเดอะเนเจอร์"
       ]
+    },
+    {
+      "id": "aonang-colors",
+      "name": "Aonang Colors",
+      "precision": "exact",
+      "lat": 8.038203,
+      "lng": 98.819528,
+      "area": "อ่าวนาง กระบี่",
+      "source": "user",
+      "aliases": [
+        "aonang colors",
+        "สามพีสองเอ็ม"
+      ]
     }
   ]
 }
