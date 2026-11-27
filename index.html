@@ -755,6 +755,14 @@ button:hover{color:var(--ink)}
 .pin-edit button:disabled{opacity:.45;cursor:default}
 .pin-msg{margin:6px 0 0;font-size:11.5px;color:var(--muted);line-height:1.45}
 .pin-msg.bad{color:var(--c7)}
+.sale-pick-wrap{display:block;margin-top:6px}
+.sale-pick-wrap.compact{margin-top:0}
+.sale-pick-lab{display:block;font-size:11.5px;font-weight:650;color:var(--ink2);margin-bottom:3px}
+select.sale-pick{width:100%;max-width:280px;padding:6px 8px;font-size:12.5px;border-radius:8px;background:var(--page);color:var(--ink);border:1px solid var(--border)}
+td select.sale-pick{max-width:210px}
+td .sale-full{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.sale-toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:5000;background:var(--ink);color:var(--page);
+  padding:10px 14px;border-radius:10px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.2);max-width:min(520px,92vw)}
 .pp{display:flex;gap:7px;padding:5px 0;border-top:1px solid var(--grid)}
 .pp i{width:9px;height:9px;border-radius:99px;flex:none;margin-top:5px}
 .pp a{color:var(--accent);font-size:12px}
@@ -815,6 +823,7 @@ mark{background:rgba(250,178,25,.35);color:inherit;border-radius:2px}
 </style>
 </head>
 <body>
+<div id="saleToast" class="sale-toast" hidden></div>
 <div class="wrap">
   <header class="top">
     <div>
@@ -889,10 +898,11 @@ mark{background:rgba(250,178,25,.35);color:inherit;border-radius:2px}
     </div>
   </section>
 
-  <p class="foot">ที่มา: แบบฟอร์มกรอกพื้นที่ลูกค้า.xlsx (ข้อมูลที่กรอกแล้วบางส่วน) · Sales_Assigned_Workload 2026</p>
+  <p class="foot">ที่มา: แบบฟอร์มกรอกพื้นที่ลูกค้า.xlsx (ข้อมูลที่กรอกแล้วบางส่วน) · Sales_Assigned_Workload 2026<br>เปลี่ยนเซลล์ผู้รับผิดชอบได้ในตารางหรือหน้าต่างลูกค้า เลือกชื่อแล้วบันทึกบนเบราว์เซอร์นี้ ทั้งสองหน้าบนเครื่องนี้จะตรงกันหลังรีเฟรช เครื่องอื่นและชีตงานยังไม่เปลี่ยน</p>
 </div>
 
 <script src="map-link.js"></script>
+<script src="sale-assign.js"></script>
 <script>/* Leaflet 1.9.4 (BSD-2-Clause) */
 /* @preserve
  * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
@@ -919,7 +929,53 @@ function hl(t,q){ t=String(t??''); if(!q) return esc(t);
   const i=t.toLowerCase().indexOf(q); if(i<0) return esc(t);
   return esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+q.length))+'</mark>'+esc(t.slice(i+q.length)); }
 
-const ROWS = D.ROWS.map((r,i) => ({...r, id:i}));
+const ROWS = D.ROWS.map((r,i) => ({...r, id:i, _baseSale: r.sale || '', _baseNick: r.nick || ''}));
+const PEOPLE = D.SALES.map(nick => {
+  const hit = ROWS.find(r => r._baseNick === nick);
+  return { nick: nick, sale: hit ? hit._baseSale : nick };
+});
+function applySaleAssign(){
+  if (!window.SaleAssign) return;
+  const store = window.SaleAssign.readStore();
+  ROWS.forEach(r => {
+    const hit = window.SaleAssign.lookup(store, r.c, r.hotel, r._baseSale);
+    r.sale = hit ? hit.sale : r._baseSale;
+    r.nick = hit ? hit.nick : r._baseNick;
+  });
+}
+applySaleAssign();
+function salePickHtml(r, compact){
+  const opts = PEOPLE.map(p =>
+    '<option value="'+esc(p.nick)+'"'+(p.nick===r.nick?' selected':'')+'>'+
+    esc(compact ? p.nick : (p.nick+' — '+p.sale))+'</option>').join('');
+  return '<span class="sale-pick-wrap'+(compact?' compact':'')+'">'+
+    (compact ? '' : '<span class="sale-pick-lab">เซลล์ผู้รับผิดชอบ</span>')+
+    '<select class="sale-pick" data-id="'+r.id+'" aria-label="เซลล์ผู้รับผิดชอบ">'+opts+'</select></span>';
+}
+function toastSale(text){
+  const el = $('#saleToast');
+  if (!el) return;
+  el.hidden = false;
+  el.textContent = text;
+  clearTimeout(toastSale._t);
+  toastSale._t = setTimeout(() => { el.hidden = true; }, 3400);
+}
+function commitSale(row, nick){
+  const person = PEOPLE.find(p => p.nick === nick);
+  if (!row || !person || !window.SaleAssign) return;
+  if (person.nick === row.nick && person.sale === row.sale) return;
+  const next = window.SaleAssign.setAssignment(
+    window.SaleAssign.readStore(), row.c, row.hotel, row._baseSale, person.sale, person.nick);
+  try { window.SaleAssign.writeStore(next); }
+  catch (e) { toastSale('บันทึกไม่สำเร็จ ลองอีกครั้ง'); return; }
+  applySaleAssign();
+  const who = row.hotel || row.c;
+  const savedNick = person.nick;
+  setTimeout(() => {
+    drawMap(); drawZoneChart(); renderTable();
+    toastSale('บันทึกบนเครื่องนี้แล้ว · ' + who + ' ดูแลโดย ' + savedNick);
+  }, 0);
+}
 const zoned = ROWS.filter(r => r.z && D.ZC[r.z]);
 const SOUTH = L.latLngBounds([5.4, 96.9], [12.0, 102.4]);   /* ภาคใต้เท่านั้น */
 const inSouth = z => { const c = D.ZC[z]; return c && SOUTH.contains(L.latLng(c[0], c[1])); };
@@ -1031,6 +1087,7 @@ function custHTML(r, withEdit){
     (exact ? '<br><span class="approx-tag">ปักตรงจุด' + (r.source ? ' · ' + esc(r.source) : '') + '</span>' : '') +
     peJobsHtml(r, withEdit ? 8 : 4) +
     (r.url ? '<br><a href="'+esc(r.url)+'" target="_blank" rel="noopener">เปิด Google Maps ↗</a>' : '') +
+    '<br>' + salePickHtml(r, false) +
     '</span>' +
     (withEdit ? pinEditHtml('cust', custKey(r)) : '') +
     '</div>';
@@ -1172,12 +1229,22 @@ function renderTable(){
     '<td>'+(r.z ? hl(r.z,q) : '<span class="none">ยังไม่กรอก</span>')+'</td>'+
     '<td>'+(r.prov ? hl(r.prov,q) : '<span class="none"></span>')+'</td>'+
     '<td>'+(r.typ ? hl(r.typ,q) : '<span class="none"></span>')+'</td>'+
-    '<td><span class="tag"><i style="background:'+cvar(r.nick)+'"></i>'+hl(r.nick,q)+'</span></td>'+
+    '<td><span class="tag"><i style="background:'+cvar(r.nick)+'"></i>'+salePickHtml(r, true)+'</span><span class="sale-full">'+esc(r.sale)+'</span></td>'+
     '<td>'+(r.url ? '<a href="'+esc(r.url)+'" target="_blank" rel="noopener">แผนที่ ↗</a>' : '')+'</td></tr>').join('') +
     (out.length>400 ? '<tr><td colspan="6" class="empty">แสดง 400 รายการแรกจาก '+nf(out.length)+'</td></tr>' : '');
 }
 ['#q','#fZone','#fSale','#fFill'].forEach(s => {
   $(s).addEventListener('input', renderTable); $(s).addEventListener('change', renderTable);
+});
+document.addEventListener('change', e => {
+  const sel = e.target.closest && e.target.closest('select.sale-pick');
+  if (!sel) return;
+  commitSale(ROWS.find(r => String(r.id) === String(sel.dataset.id)), sel.value);
+});
+window.addEventListener('storage', e => {
+  if (!window.SaleAssign || e.key !== window.SaleAssign.STORE_KEY) return;
+  applySaleAssign();
+  drawMap(); drawZoneChart(); renderTable();
 });
 
 
