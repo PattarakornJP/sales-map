@@ -24,6 +24,7 @@
 function doGet(e) {
   e = e || {};
   var action = String((e.parameter && e.parameter.action) || '').trim();
+  if (action === 'saleAssign' && typeof doGetSaleAssign_ === 'function') return doGetSaleAssign_(e);
   if (action === 'resolveMap') return emit_(e, resolveMapUrl_(e.parameter && e.parameter.url));
   var table = requestedTable_(e && e.parameter);
   if (table === 'service') return doGetService_(e);
