@@ -898,7 +898,7 @@ mark{background:rgba(250,178,25,.35);color:inherit;border-radius:2px}
     </div>
   </section>
 
-  <p class="foot">ที่มา: แบบฟอร์มกรอกพื้นที่ลูกค้า.xlsx (ข้อมูลที่กรอกแล้วบางส่วน) · Sales_Assigned_Workload 2026<br>เปลี่ยนเซลล์ผู้รับผิดชอบได้ในตารางหรือหน้าต่างลูกค้า เลือกชื่อแล้วบันทึกบนเบราว์เซอร์นี้ ทั้งสองหน้าบนเครื่องนี้จะตรงกันหลังรีเฟรช เครื่องอื่นและชีตงานยังไม่เปลี่ยน</p>
+  <p class="foot">ที่มา: แบบฟอร์มกรอกพื้นที่ลูกค้า.xlsx (ข้อมูลที่กรอกแล้วบางส่วน) · Sales_Assigned_Workload 2026<br>เลือกชื่อเซลล์แล้วบันทึกได้เลย ถ้าอัปเดตสคริปต์ของชีตแล้ว ทุกเครื่องจะเห็นชื่อเดียวกันหลังรีเฟรช ถ้ายังไม่อัปเดต จะจำไว้บนเบราว์เซอร์นี้ก่อน</p>
 </div>
 
 <script src="map-link.js"></script>
@@ -960,21 +960,34 @@ function toastSale(text){
   clearTimeout(toastSale._t);
   toastSale._t = setTimeout(() => { el.hidden = true; }, 3400);
 }
-function commitSale(row, nick){
+async function commitSale(row, nick){
   const person = PEOPLE.find(p => p.nick === nick);
   if (!row || !person || !window.SaleAssign) return;
   if (person.nick === row.nick && person.sale === row.sale) return;
-  const next = window.SaleAssign.setAssignment(
-    window.SaleAssign.readStore(), row.c, row.hotel, row._baseSale, person.sale, person.nick);
-  try { window.SaleAssign.writeStore(next); }
-  catch (e) { toastSale('บันทึกไม่สำเร็จ ลองอีกครั้ง'); return; }
-  applySaleAssign();
   const who = row.hotel || row.c;
   const savedNick = person.nick;
-  setTimeout(() => {
+  try {
+    window.SaleAssign.remember(row.c, row.hotel, row._baseSale, person.sale, person.nick);
+  } catch (e) { toastSale('บันทึกไม่สำเร็จ ลองอีกครั้ง'); return; }
+  applySaleAssign();
+  setTimeout(() => { drawMap(); drawZoneChart(); renderTable(); }, 0);
+  let text = 'บันทึกบนเครื่องนี้แล้ว · ' + who + ' ดูแลโดย ' + savedNick;
+  try {
+    const result = await window.SaleAssign.publish({
+      company: row.c, hotel: row.hotel, baseSale: row._baseSale, sale: person.sale, nick: person.nick
+    });
+    text = window.SaleAssign.saveMessage(result, who, savedNick);
+    if (result && result.redraw) { applySaleAssign(); drawMap(); drawZoneChart(); renderTable(); }
+  } catch (e) {}
+  toastSale(text);
+}
+function pullSaleSheet(){
+  if (!window.SaleAssign || !window.SaleAssign.loadRemote) return;
+  window.SaleAssign.loadRemote().then(res => {
+    if (!res || !res.applied) return;
+    applySaleAssign();
     drawMap(); drawZoneChart(); renderTable();
-    toastSale('บันทึกบนเครื่องนี้แล้ว · ' + who + ' ดูแลโดย ' + savedNick);
-  }, 0);
+  });
 }
 const zoned = ROWS.filter(r => r.z && D.ZC[r.z]);
 const SOUTH = L.latLngBounds([5.4, 96.9], [12.0, 102.4]);   /* ภาคใต้เท่านั้น */
@@ -1846,6 +1859,7 @@ nolocCtl.onAdd = function(){
 };
 nolocCtl.addTo(map);
 loadPe();
+pullSaleSheet();
 
 $('#mapNote').innerHTML = 'ตำแหน่งส่วนใหญ่คำนวณจาก <b>พื้นที่/โซน</b> — โหมด "รายลูกค้า" จะกระจายจุดรอบใจกลางโซน · ลูกค้าที่มีพิกัดจริงจะปักตรงจุด และวางลิงก์ Google Maps ในหน้าต่างลูกค้าเพื่อแก้ตำแหน่งได้' +
   (outsideCount ? ' · แผนที่แสดงเฉพาะภาคใต้ จึงไม่รวม <b>' + outsideCount + ' ราย</b> ที่อยู่นอกภาคใต้ (ดูได้ในตารางด้านล่าง)' : '');
